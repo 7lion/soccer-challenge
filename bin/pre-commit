@@ -1,0 +1,13 @@
+#!/bin/sh
+
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep src.*\.php`
+
+code_sniffer_errors=0
+
+if [ "$STAGED_FILES_CMD" != "" ]
+then
+    echo "Running PHP-CS-Fixer..."
+    ./bin/php-cs-fixer fix --config=.php_cs.dist -v --path-mode=intersection --dry-run $STAGED_FILES_CMD
+fi
+
+exit $?

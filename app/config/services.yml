@@ -1,0 +1,42 @@
+services:
+  rest.util.inflector:
+    class: AppBundle\Utils\Inflector\NoopInflector
+
+  crawler.service:
+    class: AppBundle\Service\Crawler\CrawlerService
+
+  crawler.respose.analyzer:
+    class: AppBundle\Service\Crawler\ResponseAnalyzer
+
+  crawler.process.manager:
+    class: AppBundle\Service\Crawler\CrawlerProcessManager
+    arguments:
+      - '@client.service'
+      - '@crawler.respose.analyzer'
+      - '@crawler.service'
+      - '@match.assembler'
+      - '@doctrine.orm.default_entity_manager'
+
+  client.service:
+    class: AppBundle\Service\Client\ClientService
+    arguments:
+      - '@guzzle.client'
+
+  match.assembler:
+    class: AppBundle\Assembler\MatchAssembler
+    arguments:
+      - '@team.service'
+
+  match.service:
+    class: AppBundle\Service\Match\MatchService
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+
+  team.service:
+    class: AppBundle\Service\Team\TeamService
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+
+  guzzle.client:
+    class: AppBundle\Service\Client\GuzzleClient
+    public: false
