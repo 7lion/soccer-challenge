@@ -12,5 +12,8 @@ Programming Challenge
 ### Execute DB migrations
     bin/console doctrine:migrations:migrate
     
+### Run unit tests
+    bin/console doctrine:migrations:migrate
+    
 ### Command to parse data from site
-    bin/console soccer:fetch-dat
+    bin/console soccer:fetch-data
