@@ -7,7 +7,7 @@ class ResponseAnalyzer
     public function isLastPage(array $response)
     {
         if (isset($response['commands'][1]['parameters']['attributes']['has_previous_page'])) {
-            return !(bool)$response['commands'][1]['parameters']['attributes']['has_previous_page'];
+            return !(bool) $response['commands'][1]['parameters']['attributes']['has_previous_page'];
         }
 
         return null;

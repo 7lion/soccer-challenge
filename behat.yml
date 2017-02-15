@@ -1,0 +1,15 @@
+default:
+    suites:
+        AppBundleApiSuit:
+            type: symfony_bundle
+            bundle: AppBundle
+            paths: [ %paths.base%/src/AppBundle/Features/Api/ ]
+            contexts:
+                - FeatureContext
+                - AppBundle\Features\Context\KernelContext
+                - AppBundle\Features\Context\MatchContext
+                - AppBundle\Features\Context\TeamContext
+    extensions:
+        Behat\Symfony2Extension: ~
+    gherkin:
+        cache: null

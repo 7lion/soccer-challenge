@@ -31,6 +31,7 @@ class TeamCollection
         if ($result->count() === 0) {
             return null;
         }
+
         return $result->first();
     }
 }

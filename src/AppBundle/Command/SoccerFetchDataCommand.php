@@ -55,7 +55,7 @@ class SoccerFetchDataCommand extends ContainerAwareCommand
                     );
                     die;
             }
-            $countOfCrawledPages++;
+            ++$countOfCrawledPages;
         }
     }
 }

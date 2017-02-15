@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityRepository;
 class MatchRepository extends EntityRepository
 {
     /**
-     * @param int[] $homeTeamIds
+     * @param int[]          $homeTeamIds
      * @param \DateTime|null $fromDate
      * @param \DateTime|null $toDate
      *
@@ -69,20 +69,20 @@ class MatchRepository extends EntityRepository
         }
 
         if ($fromDate) {
-            $qb->andWhere($qb->expr()->gt('m.dateTimeOfMatch', ':dateFrom'))
-                ->setParameter(':dateFrom', $fromDate, Type::DATE);
+            $qb->andWhere($qb->expr()->gte('m.dateTimeOfMatch', ':dateFrom'))
+                ->setParameter(':dateFrom', $fromDate, Type::DATETIME);
         }
 
         if ($toDate) {
-            $qb->andWhere($qb->expr()->lt('m.dateTimeOfMatch', ':dateTo'))
-                ->setParameter(':dateTo', $toDate, Type::DATE);
+            $qb->andWhere($qb->expr()->lte('m.dateTimeOfMatch', ':dateTo'))
+                ->setParameter(':dateTo', $toDate, Type::DATETIME);
         }
 
         return $qb->getQuery()->execute();
     }
 
     /**
-     * @param int[] $awayTeamIds
+     * @param int[]          $awayTeamIds
      * @param \DateTime|null $fromDate
      * @param \DateTime|null $toDate
      *
@@ -143,13 +143,13 @@ class MatchRepository extends EntityRepository
         }
 
         if ($fromDate) {
-            $qb->andWhere($qb->expr()->gt('m.dateTimeOfMatch', ':dateFrom'))
-                ->setParameter(':dateFrom', $fromDate, Type::DATE);
+            $qb->andWhere($qb->expr()->gte('m.dateTimeOfMatch', ':dateFrom'))
+                ->setParameter(':dateFrom', $fromDate, Type::DATETIME);
         }
 
         if ($toDate) {
-            $qb->andWhere($qb->expr()->lt('m.dateTimeOfMatch', ':dateTo'))
-                ->setParameter(':dateTo', $toDate, Type::DATE);
+            $qb->andWhere($qb->expr()->lte('m.dateTimeOfMatch', ':dateTo'))
+                ->setParameter(':dateTo', $toDate, Type::DATETIME);
         }
 
         return $qb->getQuery()->execute();

@@ -7,18 +7,18 @@ use Symfony\Component\DomCrawler\Crawler;
 trait CrawlerTrait
 {
     /**
-     * @param string $xpath
+     * @param string  $xpath
      * @param Crawler $dom
      *
      * @return bool
      */
     public static function exitElement($xpath, Crawler $dom)
     {
-        return (bool)$dom->filter($xpath)->count();
+        return (bool) $dom->filter($xpath)->count();
     }
 
     /**
-     * @param string $xpath
+     * @param string  $xpath
      * @param Crawler $dom
      *
      * @return string

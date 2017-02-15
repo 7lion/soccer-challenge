@@ -16,6 +16,7 @@ class ClientService
 
     /**
      * @param string $url
+     *
      * @return string
      *
      * @throws \RuntimeException

@@ -11,6 +11,7 @@ interface ClientInterface
      * @param string $uri
      *
      * @return ResponseInterface
+     *
      * @throws \RuntimeException
      */
     public function request($method, $uri);

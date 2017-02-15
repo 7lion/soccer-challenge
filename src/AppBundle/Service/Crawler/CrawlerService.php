@@ -45,8 +45,8 @@ class CrawlerService
                 $scoreList = explode(' - ', $scoreString);
                 if (count($scoreList) === 2) {
                     list($homeTeamScore, $awayTeamScore) = $scoreList;
-                    $dto->homeTeamScore = (int)$homeTeamScore;
-                    $dto->awayTeamScore = (int)$awayTeamScore;
+                    $dto->homeTeamScore = (int) $homeTeamScore;
+                    $dto->awayTeamScore = (int) $awayTeamScore;
                 }
             }
 

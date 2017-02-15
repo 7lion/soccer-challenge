@@ -45,7 +45,7 @@ class MatchService
     {
         $result = [];
 
-        foreach ($homeTeamsData as $homeTeamData) {
+        foreach ($homeTeamsData as $homeTeamKey => $homeTeamData) {
             foreach ($awayTeamsData as $awayTeamKey => $awayTeamData) {
                 if ($homeTeamData['teamId'] === $awayTeamData['teamId']) {
                     $standings = new StandingsDTO();
@@ -59,19 +59,22 @@ class MatchService
                     $result[] = $standings;
 
                     unset($awayTeamsData[$awayTeamKey]);
+                    unset($homeTeamsData[$homeTeamKey]);
                     break;
                 }
             }
         }
 
-        foreach ($awayTeamsData as $awayTeamData) {
+        foreach (array_merge($homeTeamsData, $awayTeamsData) as $teamData) {
             $standings = new StandingsDTO();
-            $standings->name = $awayTeamData['teamName'];
-            $standings->score = $awayTeamData['score'];
-            $standings->wins = $awayTeamData['wins'];
-            $standings->losses = $awayTeamData['losses'];
-            $standings->draws = $awayTeamData['draws'];
-            $standings->played = $awayTeamData['played'];
+            $standings->name = $teamData['teamName'];
+            $standings->score = (int) $teamData['score'];
+            $standings->wins = (int) $teamData['wins'];
+            $standings->losses = (int) $teamData['losses'];
+            $standings->draws = (int) $teamData['draws'];
+            $standings->played = (int) $teamData['played'];
+
+            $result[] = $standings;
         }
 
         usort($result, function (StandingsDTO $obj1, StandingsDTO $obj2) {
@@ -83,7 +86,7 @@ class MatchService
         });
 
         foreach ($result as $i => $item) {
-            /** @var StandingsDTO $item */
+            /* @var StandingsDTO $item */
             $item->place = ++$i;
         }
 

@@ -6,8 +6,7 @@ use FOS\RestBundle\Util\Inflector\InflectorInterface;
 
 /**
  * NOT to pluralize rest routes!
- * Class NoopInflector
- * @package AppBundle\Utils
+ * Class NoopInflector.
  */
 class NoopInflector implements InflectorInterface
 {

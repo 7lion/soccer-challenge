@@ -8,12 +8,17 @@ Programming Challenge
     
 ### Create database
     bin/console doctrine:database:create
+    bin/console doctrine:database:create -e=test
     
 ### Execute DB migrations
     bin/console doctrine:migrations:migrate
+    bin/console doctrine:migrations:migrate -e=test
     
 ### Run unit tests
-    bin/console doctrine:migrations:migrate
+    bin/phpunit
+    
+### Run behat tests
+    vendor/behat/behat/bin/behat
     
 ### Command to parse data from site
     bin/console soccer:fetch-data
